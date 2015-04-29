@@ -1,0 +1,24 @@
+<%= link "New entry", to: entry_path(@conn, :new), class: "btn btn-primary" %>
+<%= for entry <- @entries do %>
+  <div class="row entry">
+    <div class="col-md-2">
+    <img src='<%= gravatar_url(entry.email)%>'>
+      <div class="author">
+      <%= entry.author_name %>
+      </div>
+    </div>
+    <div class="title">
+      <%= entry.inserted_at %>
+    <div>
+      </div>
+      <div class="posted-at">
+        <i class="fa fa-clock-o"></i>
+        <%= entry.inserted_at %>
+      </div>
+      <hr>
+      <div class="body">
+        <%= entry.body %>
+      </div>
+    </div>
+  </div>
+<% end %>

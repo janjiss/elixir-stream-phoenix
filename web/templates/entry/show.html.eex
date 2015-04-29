@@ -1,0 +1,37 @@
+<h2>Show entry</h2>
+
+<ul>
+
+  <li>
+    <strong>UserId:</strong>
+    <%= @entry.user_id %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @entry.email %>
+  </li>
+
+  <li>
+    <strong>AuthorName:</strong>
+    <%= @entry.author_name %>
+  </li>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @entry.title %>
+  </li>
+
+  <li>
+    <strong>Body:</strong>
+    <%= @entry.body %>
+  </li>
+
+  <li>
+    <strong>Slug:</strong>
+    <%= @entry.slug %>
+  </li>
+
+</ul>
+
+<%= link "Back", to: entry_path(@conn, :index) %>
