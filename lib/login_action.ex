@@ -6,7 +6,7 @@ defmodule ElixirStream.LoginAction do
     case UserQueries.find_user_by_login(username) do
       %User{password_digest: password_digest} = user ->
         if Comeonin.Bcrypt.checkpw(password, password_digest) do
-          user 
+          {:ok, user}
         else
           :error
         end

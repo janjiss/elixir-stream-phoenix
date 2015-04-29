@@ -22,7 +22,7 @@ defmodule ElixirStream.LoginActionTest do
     assert(:error == LoginAction.check_username_and_password("not_present_user", "qwerty123"))
   end
 
-  test "It returns an error if there is a user in database, but passwords don't match" do
-    assert({:ok, %User{email: "janjiss@gmail.com"}} == LoginAction.check_username_and_password("janjiss", "qwery123"))
+  test "It returns a user if username is present and passwords match" do
+    assert({:ok, %User{email: "janjiss@gmail.com"}} = LoginAction.check_username_and_password("janjiss", "qwerty123"))
   end
 end
