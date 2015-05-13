@@ -1,11 +1,7 @@
-defmodule ElixirStream.ConnCase do
+defmodule ElixirStream.ModelCase do
   @moduledoc """
   This module defines the test case to be used by
-  tests that require setting up a connection.
-
-  Such tests rely on `Phoenix.ConnTest` and also
-  imports other functionality to make it easier
-  to build and query models.
+  model tests.
 
   Finally, if the test case interacts with the database,
   it cannot be async. For this reason, every test runs
@@ -17,19 +13,10 @@ defmodule ElixirStream.ConnCase do
 
   using do
     quote do
-      # Import conveniences for testing with connections
-      use Phoenix.ConnTest
-
       # Alias the data repository and import query/model functions
       alias ElixirStream.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
-
-      # Import URL helpers from the router
-      import ElixirStream.Router.Helpers
-
-      # The default endpoint for testing
-      @endpoint ElixirStream.Endpoint
     end
   end
 

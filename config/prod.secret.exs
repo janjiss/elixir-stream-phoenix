@@ -12,3 +12,4 @@ config :elixir_stream, ElixirStream.Repo,
   username: "postgres",
   password: "postgres",
   database: "elixir_stream_phoenix_prod"
+  size: 20 # The amount of database connections in the pool

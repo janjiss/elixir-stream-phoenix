@@ -1,5 +1,5 @@
 defmodule ElixirStream.Router do
-  use Phoenix.Router
+  use ElixirStream.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
