@@ -16,8 +16,8 @@
   </div>
 
   <div class="form-group">
-    <label>PasswordDigest</label>
-    <%= text_input f, :password_digest, class: "form-control" %>
+    <label>Password</label>
+    <%= text_input f, :password, class: "form-control" %>
   </div>
 
   <div class="form-group">
@@ -26,6 +26,6 @@
   </div>
 
   <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+    <%= submit "Register", class: "btn btn-primary" %>
   </div>
 <% end %>
