@@ -24,7 +24,7 @@ defmodule ElixirStream.Entry do
   If `params` are nil, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset_without_user(model, params \\ nil) do
+  def changeset_without_user(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
     |> validate_format(:email, ~r/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/)
@@ -34,7 +34,7 @@ defmodule ElixirStream.Entry do
     |> validate_length(:body, max: 500)
   end
 
-  def changeset_with_user(model, params \\ nil) do
+  def changeset_with_user(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
     |> validate_length(:title, min: 5)

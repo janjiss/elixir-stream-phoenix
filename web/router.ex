@@ -20,6 +20,7 @@ defmodule ElixirStream.Router do
     post "log_in", UserController, :log_in
     get "sign_out", UserController, :sign_out
     get "about", PageController, :about
+    get "/", EntryController, :index
     resources "entries", EntryController
   end
 
