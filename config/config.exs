@@ -12,7 +12,9 @@ config :elixir_stream, ElixirStream.Endpoint,
   secret_key_base: "Bh92d59cbz3kKIfaFxeqEK/8LUPHV4tiirttImfeIVS0f94WByg3wo0yDABTTQY3",
   debug_errors: false,
   pubsub: [name: ElixirStream.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+           adapter: Phoenix.PubSub.PG2],
+  session: [store: :cookie,
+           key: "gp6cONncGLws1zaQYhxJ9w=="]
 
 # Configures Elixir's Logger
 config :logger, :console,

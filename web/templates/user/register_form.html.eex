@@ -1,0 +1,6 @@
+<h2>Register</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: user_path(@conn, :register) %>
+
+<%= link "Back", to: entry_path(@conn, :index) %>

@@ -14,12 +14,13 @@ defmodule ElixirStream.Router do
 
   scope "/", ElixirStream do
     pipe_through :browser # Use the default browser stack
-    get "/log_in_form", UserController, :log_in_form
-    post "/log_in", UserController, :log_in
-    resources "/entries", EntryController
-    get "/about", PageController, :about
-    resources "/entries", EntryController
-    resources "/", EntryController
+    get "register_form", UserController, :register_form
+    post "register", UserController, :register
+    get "log_in_form", UserController, :log_in_form
+    post "log_in", UserController, :log_in
+    get "sign_out", UserController, :sign_out
+    get "about", PageController, :about
+    resources "entries", EntryController
   end
 
   # Other scopes may use custom stacks.

@@ -4,6 +4,7 @@ defmodule ElixirStream.UserController do
   alias ElixirStream.User
   alias ElixirStream.UserQueries
 
+  plug :redirect_if_authenticated when action in [:register, :register_form, :log_in, :log_in_form]
   plug :scrub_params, "user" when action in [:create, :update]
   plug :action
 
@@ -17,60 +18,63 @@ defmodule ElixirStream.UserController do
   end
 
   def log_in(conn, %{"log_in_info" => %{"username" => username, "password" => password}}) do
-    case LoginAction.check_username_and_password(username, password) do
+    case ElixirStream.LoginAction.check_username_and_password(username, password) do
       {:ok, user} ->
         conn
         |> put_flash(:info, "You have logged in!")
+        |> put_session(:user_id, user.id)
         |> redirect(to: entry_path(conn, :index))
-      :not_found ->
+      :error ->
         conn
         |> put_flash(:info, "No such login or password")
         |> redirect(to: user_path(conn, :log_in_form))
     end
   end
 
-  def sign_up(conn, %{"user" => user_params}) do
-    changeset = User.changeset(%User{}, user_params)
-
-    if changeset.valid? do
-      Repo.insert(changeset)
-
-      conn
-      |> put_flash(:info, "User created successfully.")
-      |> redirect(to: user_path(conn, :index))
-    else
-      render conn, "new.html", changeset: changeset
-    end
-  end
-
-
-  def edit(conn, %{"id" => id}) do
-    user = Repo.get(User, id)
-    changeset = User.changeset(user)
-    render conn, "edit.html", user: user, changeset: changeset
-  end
-
-  def update(conn, %{"id" => id, "user" => user_params}) do
-    user = Repo.get(User, id)
-    changeset = User.changeset(user, user_params)
-
-    if changeset.valid? do
-      Repo.update(changeset)
-
-      conn
-      |> put_flash(:info, "User updated successfully.")
-      |> redirect(to: user_path(conn, :index))
-    else
-      render conn, "edit.html", user: user, changeset: changeset
-    end
-  end
-
-  def delete(conn, %{"id" => id}) do
-    user = Repo.get(User, id)
-    Repo.delete(user)
-
+  def sign_out(conn, _params) do
     conn
-    |> put_flash(:info, "User deleted successfully.")
-    |> redirect(to: user_path(conn, :index))
+    |> put_flash(:info, "You have logged out!")
+    |> delete_session(:user_id)
+    |> redirect(to: entry_path(conn, :index))
+  end
+
+  def register_form(conn, _params) do
+    render(conn, "register_form.html", changeset: User.changeset(%User{}))
+  end
+
+  def register(conn, %{"user" => user_params}) do
+    case ElixirStream.RegisterAction.sign_up(user_params) do
+      {:ok, user} ->
+        conn
+        |> put_flash(:info, "You have signed up and logged in!")
+        |> put_session(:user_id, user.id)
+        |> redirect(to: entry_path(conn, :index))
+      {:error, changeset} ->
+        conn
+        |> render("register_form.html", changeset: changeset)
+    end
+  end
+
+  def redirect_if_authenticated(conn, opts) do
+    conn = try_authenticate(conn)
+    if Map.get(conn.assigns, :current_user) do
+      conn
+      |> put_flash(:info, "You have already logged in!")
+      |> redirect(to: entry_path(conn, :index))
+    end
+    conn
+  end
+
+  def try_authenticate(conn) do
+    if authenticated?(conn) do
+      user_id = get_session(conn, :user_id)
+      assign(conn, :current_user, Repo.get(User, user_id))
+    end
+    conn
+  end
+
+  def authenticated?(conn) do
+    conn
+    |> get_session(:user_id)
   end
 end

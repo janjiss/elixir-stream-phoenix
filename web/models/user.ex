@@ -11,7 +11,6 @@ defmodule ElixirStream.User do
   end
 
   @required_fields ~w()
-  @optional_fields ~w()
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -20,7 +19,7 @@ defmodule ElixirStream.User do
   with no validation performed.
   """
 
-  def changeset(user, params) do
+  def changeset(user, params \\ nil) do
     user
     |> cast(params, ~w(username email password))
     |> validate_format(:email, ~r/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/)
