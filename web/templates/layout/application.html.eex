@@ -20,9 +20,18 @@
       <div class="container-fluid">
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
+            <%= if @conn.assigns[:current_user] do %>
             <li>
               <a href="<%= user_path(@conn, :sign_out) %>">Sign out</a>
             </li>
+          <% else %>
+            <li>
+              <a href="<%= user_path(@conn, :log_in_form) %>">Log in</a>
+            </li>
+            <li>
+              <a href="<%= user_path(@conn, :register_form) %>">Register</a>
+            </li>
+          <% end %>
           </ul>
         </div>
       </div>

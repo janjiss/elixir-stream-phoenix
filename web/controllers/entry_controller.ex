@@ -1,5 +1,6 @@
 defmodule ElixirStream.EntryController do
   use ElixirStream.Web, :controller
+  plug ElixirStream.Plugs.CheckAuthentication
 
   alias ElixirStream.Entry
 

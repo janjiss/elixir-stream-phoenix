@@ -4,6 +4,7 @@ defmodule ElixirStream.UserController do
   alias ElixirStream.User
   alias ElixirStream.UserQueries
 
+  plug ElixirStream.Plugs.CheckAuthentication
   plug :redirect_if_authenticated when action in [:register, :register_form, :log_in, :log_in_form]
   plug :scrub_params, "user" when action in [:create, :update]
   plug :action
@@ -56,25 +57,11 @@ defmodule ElixirStream.UserController do
   end
 
   def redirect_if_authenticated(conn, opts) do
-    conn = try_authenticate(conn)
-    if Map.get(conn.assigns, :current_user) do
+    if conn.assigns[:current_user] do
       conn
       |> put_flash(:info, "You have already logged in!")
       |> redirect(to: entry_path(conn, :index))
     end
     conn
-  end
-
-  def try_authenticate(conn) do
-    if authenticated?(conn) do
-      user_id = get_session(conn, :user_id)
-      assign(conn, :current_user, Repo.get(User, user_id))
-    end
-    conn
-  end
-
-  def authenticated?(conn) do
-    conn
-    |> get_session(:user_id)
   end
 end
