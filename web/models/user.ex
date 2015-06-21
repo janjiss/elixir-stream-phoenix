@@ -7,6 +7,7 @@ defmodule ElixirStream.User do
     field :password_digest, :string
     field :email, :string
     field :password, :string, virtual: true
+    has_many :entries, Entry
     timestamps
   end
 
