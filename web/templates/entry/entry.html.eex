@@ -1,0 +1,23 @@
+<div class="row entry">
+  <div class="col-md-2">
+  <img src='<%= gravatar_url(@entry)%>'>
+    <div class="author">
+    <%= author_name(@entry) %>
+    </div>
+  </div>
+  <div class="title">
+    <a href='<%= entry_path(@conn, :show, @entry.id) %>'>
+      <%= @entry.title %>
+    </a>
+  <div>
+    </div>
+    <div class="posted-at">
+      <i class="fa fa-clock-o"></i>
+      <%= @entry.inserted_at %>
+    </div>
+    <div class="body">
+      <%= @entry.body %>
+    </div>
+    <hr>
+  </div>
+</div>

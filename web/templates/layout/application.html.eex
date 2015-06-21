@@ -20,23 +20,17 @@
             <li>
               <a href="<%= entry_path(@conn, :new) %>">Submit</a>
             </li>
-            <%= if @conn.assigns[:current_user] do %>
-            <li>
-              <a href="<%= user_path(@conn, :sign_out) %>">Sign out</a>
-            </li>
+          <%= if current_user(@conn) do %>
+            <%= render "sign_out.html", conn: @conn %>
           <% else %>
-            <li>
-              <a href="<%= user_path(@conn, :log_in_form) %>">Log in</a>
-            </li>
-            <li>
-              <a href="<%= user_path(@conn, :register_form) %>">Register</a>
-            </li>
+            <%= render "log_in.html", conn: @conn %>
           <% end %>
           </ul>
         </div>
       </div>
       </div>
     </nav>
+
     <div class="container">
 
       <p class="alert alert-info"><%= get_flash(@conn, :info) %></p>
