@@ -19,11 +19,11 @@ defmodule ElixirStream.User do
   If `params` are nil, an invalid chageset is returned
   with no validation performed.
   """
-  
+
   def changeset(user, params) do
     user
     |> cast(params, ~w(username email password))
-    |> validate_format(:email, ~r/@/)
+    |> validate_format(:email, ~r/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/)
     |> validate_length(:username, min: 5)
     |> validate_length(:username, max: 50)
     |> validate_length(:password, min: 8)

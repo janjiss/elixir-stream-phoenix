@@ -37,7 +37,7 @@ defmodule ElixirStream.RegisterActionTest do
     end
   end
 
-  test "user already present" do
+  test "username already present" do
     Repo.insert(%User{username: "janjiss"})
     case RegisterAction.sign_up(%{"username" => "janjiss", "email" => "janjiss@gmail.com", "password" => "qwerty123"}) do
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -50,6 +50,13 @@ defmodule ElixirStream.RegisterActionTest do
     case RegisterAction.sign_up(%{"username" => "janjiss", "email" => "janjiss@gmail.com", "password" => "qwerty123"}) do
       {:error, %Ecto.Changeset{} = changeset} ->
         assert(changeset.errors == [email: "has already been taken"])
+    end
+  end
+
+  test "email format wrong" do
+    case RegisterAction.sign_up(%{"username" => "janjiss", "email" => "janjissgmail.com", "password" => "qwerty123"}) do
+      {:error, %Ecto.Changeset{} = changeset} ->
+        assert(changeset.errors == [email: "has invalid format"])
     end
   end
 end
