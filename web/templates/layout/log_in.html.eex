@@ -1,0 +1,6 @@
+<li>
+  <a href="<%= user_path(@conn, :log_in_form) %>">Log in</a>
+</li>
+<li>
+  <a href="<%= user_path(@conn, :register_form) %>">Register</a>
+</li>

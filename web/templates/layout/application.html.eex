@@ -33,7 +33,7 @@
           </li>
         </ul>
         <div class="pull-right">
-          <%= if @conn.assigns[:current_user] do %>
+          <%= if current_user(@conn) do %>
             <%= @conn.assigns[:current_user].username %> &nbsp;&nbsp;&nbsp; 
             <i class="fa fa-cog"></i>
             <a href="<%= user_path(@conn, :sign_out) %>" id="signout">Sign out
@@ -48,7 +48,7 @@
         </div>
       </div>
     </div>
-  </div>
+
     <div class="container">
 
       <p class="alert alert-info"><%= get_flash(@conn, :info) %></p>

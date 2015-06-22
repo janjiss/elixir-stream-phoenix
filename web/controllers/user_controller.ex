@@ -1,8 +1,6 @@
 defmodule ElixirStream.UserController do
   use ElixirStream.Web, :controller
-
   alias ElixirStream.User
-  alias ElixirStream.UserQueries
 
   plug ElixirStream.Plugs.CheckAuthentication
   plug :redirect_if_authenticated when action in [:register, :register_form, :log_in, :log_in_form]
@@ -32,6 +30,7 @@ defmodule ElixirStream.UserController do
     end
   end
 
+
   def sign_out(conn, _params) do
     conn
     |> put_flash(:info, "You have logged out!")
@@ -40,6 +39,11 @@ defmodule ElixirStream.UserController do
   end
 
   def register_form(conn, _params) do
+    render(conn, "register_form.html", changeset: User.changeset(%User{}))
+  end
+
+
+  def register_form(conn, _register) do
     render(conn, "register_form.html", changeset: User.changeset(%User{}))
   end
 
@@ -55,6 +59,7 @@ defmodule ElixirStream.UserController do
         |> render("register_form.html", changeset: changeset)
     end
   end
+
 
   def redirect_if_authenticated(conn, opts) do
     if conn.assigns[:current_user] do
