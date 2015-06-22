@@ -39,7 +39,7 @@ defmodule ElixirStream.EntryController do
   end
 
   def show(conn, %{"id" => id}) do
-    entry = Repo.get(Entry, id)
+    entry = Repo.one(from(e in Entry, where: e.id == ^id, preload: [:user]))
     render conn, "show.html", entry: entry
   end
 
