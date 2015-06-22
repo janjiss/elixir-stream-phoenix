@@ -10,7 +10,10 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css">
     <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+    
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
@@ -66,5 +69,25 @@
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <script>require("web/static/js/app")</script>
+    <script>
+      $(document).ready(function(event) {
+        if ($("#entry_body") && $("#entry_body").val().length > 0) {
+          $("#entry_preview").html(
+              marked($("#entry_body").val())
+              );
+        }
+
+        $.each( $(".entry .body"), function( object) {
+          object.html(marked(object.html))
+        });
+
+        $("#entry_body").keyup(function(event) {
+          $("#entry_preview").html(
+              marked(event.currentTarget.value)
+              );
+        });
+      });
+
+    </script>
   </body>
 </html>

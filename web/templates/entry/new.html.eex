@@ -66,7 +66,7 @@
 
   <hr>
 
-  <div class="preview-area">
+  <div id="entry_preview">
     <div class="info-message">
       Live preview area. Enter some text in the textarea above and watch me change
     </div>
