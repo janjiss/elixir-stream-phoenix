@@ -1,7 +1,77 @@
-<h2>New entry</h2>
+<div class="container">
+  <div class="row entry submit">
+    <div class="title">Submit</div>
+    <hr>
 
-<%= render "form.html", changeset: @changeset,
-action: entry_path(@conn, :create),
-conn: @conn%>
+    <div class="alert alert-info">
+      Tips before you hit <strong>Submit</strong>:
+      <br><br>
+      <ul>
+        <li>We support markdown so use that to format your entry</li>
+        <li>Use the live preview area below to make sure all of the formatting and links are working correctly</li>
+      </ul>
+    </div>
 
-<%= link "Back", to: entry_path(@conn, :index) %>
+    <%= form_for @changeset, entry_path(@conn, :create), fn f -> %>
+
+    <%= if f.errors != [] do %>
+      <div class="alert alert-danger">
+        <p>Oops, something went wrong! Please check the errors below:</p>
+        <ul>
+          <%= for {attr, message} <- f.errors do %>
+            <li><%= humanize(attr) %> <%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= unless @conn.assigns[:current_user] do %>
+      <div class="control-group">
+        <label class="control-label" for="entry_email">Your Email</label>
+        <div class="controls">
+          <%= text_input f, :email, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="entry_author_name">Your name</label>
+        <div class="controls">
+          <%= text_input f, :author_name, class: "form-control" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="control-group">
+      <label class="control-label" for="entry_title">Title</label>
+      <div class="controls">
+        <%= text_input f, :title, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="entry_content">Content</label>
+      <div class="controls">
+        <%= textarea f, :body, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <%= submit "Submit", class: "btn btn-primary" %>
+        or
+        <%= link "Cancel", to: entry_path(@conn, :index) %>
+      </div>
+    </div>
+  <% end %>
+
+  <hr>
+
+  <div class="preview-area">
+    <div class="info-message">
+      Live preview area. Enter some text in the textarea above and watch me change
+    </div>
+  </div>
+
+  </div>
+
+</div>

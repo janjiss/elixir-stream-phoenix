@@ -93,15 +93,13 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-#inputBody {
+#entry_body {
   width: 95%;
   height: 100px;
 }
 
-input[type="text"] {
-  &#inputAuthor, &#inputTitle {
-    width: 300px;
-  }
+#entry_author_name, #entry_title, #entry_email{
+	width: 300px;
 }
 
 textarea:focus, input[type="text"]:focus, input[type="password"]:focus {
