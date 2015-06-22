@@ -16,8 +16,7 @@
     </div>
     <hr>
 
-    <div class="body">
-      <%= @entry.body %>
+    <div class="body" data-body="<%= @entry.body %>">
     </div>
   </div>
 </div>

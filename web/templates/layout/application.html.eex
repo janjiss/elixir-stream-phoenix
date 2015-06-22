@@ -71,14 +71,14 @@
     <script>require("web/static/js/app")</script>
     <script>
       $(document).ready(function(event) {
-        if ($("#entry_body") && $("#entry_body").val().length > 0) {
+        if ($("#entry_body").length > 0 && $("#entry_body").val().length > 0) {
           $("#entry_preview").html(
               marked($("#entry_body").val())
               );
         }
 
-        $.each( $(".entry .body"), function( object) {
-          object.html(marked(object.html))
+        $.each( $(".entry .body"), function( index, object) {
+          $(object).html(marked($(object).data("body")))
         });
 
         $("#entry_body").keyup(function(event) {
@@ -87,7 +87,6 @@
               );
         });
       });
-
     </script>
   </body>
 </html>
