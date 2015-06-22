@@ -8,7 +8,7 @@
 
   <div class="span10">
     <div>
-      <%= link @entry.title, to: entry_path(@conn, :show, @entry), class: "title" %>
+      <%= link @entry.title, to: entry_path(@conn, :show, @entry.slug ), class: "title" %>
     </div>
     <div class="posted-at">
       <i class="fa fa-clock-o"></i>
