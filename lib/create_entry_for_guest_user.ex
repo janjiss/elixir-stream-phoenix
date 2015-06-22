@@ -4,7 +4,7 @@ defmodule ElixirStream.CreateEntryActionForGuestUser do
   def persist(params) do
     changeset = Entry.changeset_without_user(%Entry{}, params)
     if changeset.valid? do
-      entry = ElixirStream.Repo.insert
+      entry = ElixirStream.Repo.insert(changeset)
       {:ok, entry}
     else
       {:error, changeset}

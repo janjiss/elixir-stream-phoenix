@@ -6,7 +6,7 @@ defmodule ElixirStream.CreateEntryActionForExistingUser do
     changeset = Entry.changeset_with_user(%Entry{}, params)
     if changeset.valid? do
       entry =
-        Ecto.Changeset.change(%{user_id: user.id}) |>
+        Ecto.Changeset.change(changeset, %{user_id: user.id}) |>
         ElixirStream.Repo.insert
       {:ok, entry}
     else

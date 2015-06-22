@@ -4,6 +4,9 @@
       <img src='<%= gravatar_url(@entry)%>' class="gravatar">
     </div>
     <div class="author"><%= author_name(@entry) %></div>
+    <%= if owner(@conn, @entry) do %>
+      <%= link "Delete this post", to: entry_path(@conn, :delete, @entry), method: :delete, class: "delete-link" %>
+    <%end%>
   </div>
 
   <div class="span10">
@@ -18,8 +21,5 @@
 
     <div class="body" data-body="<%= @entry.body %>">
     </div>
-    <%= if owner(@conn, @entry) do %>
-      <%= link "Delete", to: entry_path(@conn, :delete, @entry), method: :delete, class: "btn btn-danger btn-xs" %>
-    <%end%>
   </div>
 </div>
