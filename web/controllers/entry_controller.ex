@@ -1,4 +1,5 @@
 defmodule ElixirStream.EntryController do
+  require IEx
   use ElixirStream.Web, :controller
   alias ElixirStream.Entry
 
@@ -44,11 +45,16 @@ defmodule ElixirStream.EntryController do
   end
 
   def delete(conn, %{"id" => id}) do
-    entry = Repo.get(Entry, id)
-    Repo.delete(entry)
-
+    user = get_session(conn, :user_id)
+    entry = Repo.one(from(e in Entry, where: e.id == ^id and e.user_id  == ^user ))
+    if entry do
+      Repo.delete(entry)
+      message = "Entry deleted successfully."
+    else
+      message = "Access denied"
+    end
     conn
-    |> put_flash(:info, "Entry deleted successfully.")
+    |> put_flash(:info, message)
     |> redirect(to: entry_path(conn, :index))
   end
 end
