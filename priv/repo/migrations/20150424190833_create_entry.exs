@@ -12,5 +12,7 @@ defmodule ElixirStream.Repo.Migrations.CreateEntry do
 
       timestamps
     end
+    
+    create index(:entries, [:slug])
   end
 end

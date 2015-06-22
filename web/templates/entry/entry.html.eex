@@ -8,7 +8,7 @@
 
   <div class="span10">
     <div>
-      <a class="title" href='<%= entry_path(@conn, :show, @entry.id) %>'><%= @entry.title %></a>
+      <%= link @entry.title, to: entry_path(@conn, :show, @entry.slug ), class: "title" %>
     </div>
     <div class="posted-at">
       <i class="fa fa-clock-o"></i>
@@ -18,5 +18,8 @@
 
     <div class="body" data-body="<%= @entry.body %>">
     </div>
+    <%= if owner(@conn, @entry) do %>
+      <%= link "Delete", to: entry_path(@conn, :delete, @entry), method: :delete, class: "btn btn-danger btn-xs" %>
+    <%end%>
   </div>
 </div>
