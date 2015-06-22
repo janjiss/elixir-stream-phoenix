@@ -18,6 +18,6 @@
     <div class="body">
       <%= @entry.body %>
     </div>
-    <hr>
   </div>
 </div>
+<hr>
