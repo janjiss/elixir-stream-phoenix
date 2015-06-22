@@ -7,11 +7,11 @@ defmodule ElixirStream.EntryView do
   end
 
   def gravatar_url(%Entry{email: email}) when email != nil do
-    "https://secure.gravatar.com/avatar/#{gravatar_md5(email)}?s=70"
+    "https://secure.gravatar.com/avatar/#{gravatar_md5(email)}?s=90"
   end
 
   def gravatar_url %Entry{user: %{email: email}} do
-    "https://secure.gravatar.com/avatar/#{gravatar_md5(email)}?s=70"
+    "https://secure.gravatar.com/avatar/#{gravatar_md5(email)}?s=90"
   end
 
   def author_name(%Entry{author_name: author_name}) when author_name != nil do

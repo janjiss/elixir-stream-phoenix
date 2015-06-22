@@ -1,20 +1,22 @@
 <%= for entry <- @entries do %>
   <div class="row entry">
-    <div class="col-md-2">
-    <img src='<%= gravatar_url(entry)%>'>
-      <div class="author">
-      <%= author_name(entry) %>
+    <div class="span2">
+      <div class="gravatar">
+        <img src='<%= gravatar_url(entry)%>' class="gravatar">
       </div>
+      <div class="author"><%= author_name(entry) %></div>
     </div>
-    <div class="title">
-      <%= entry.title %>
-    <div>
+
+    <div class="span10">
+      <div>
+        <a class="title"><%= entry.title %></a>
       </div>
       <div class="posted-at">
-        <i class="fa fa-clock-o"></i>
+        <i class="fa fa-clock-o"></i> 
         <%= entry.inserted_at %>
       </div>
       <hr>
+
       <div class="body">
         <%= entry.body %>
       </div>

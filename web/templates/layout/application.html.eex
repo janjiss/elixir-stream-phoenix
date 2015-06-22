@@ -6,45 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ElixirStream - Community driven place for Elixir goodies</title>
     <meta name="description" content="Community driven place for Elixir goodies">
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&subset=cyrillic-ext,greek-ext' rel='stylesheet' type='text/css'>
     <!-- Latest compiled and minified CSS -->
-    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css">
     <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
-  <body>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="<%= entry_path(@conn, :new) %>">Submit</a>
-            </li>
-            <%= if @conn.assigns[:current_user] do %>
-            <li>
-              <a href="<%= user_path(@conn, :sign_out) %>">Sign out</a>
-            </li>
+  <div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a href="<%= entry_path(@conn, :index) %>" class="brand">ElixirStream</a>
+        <ul class="nav">
+          <li>
+            <a href="<%= entry_path(@conn, :index) %>">Entries</a>
+          </li>
+          <li>
+            <a href="<%= entry_path(@conn, :new) %>">Submit</a>
+          </li>
+          <li>
+            <a href="<%= page_path(@conn, :about) %>">About</a>
+          </li>
+          <li>
+            <a href="https://twitter.com/elixirstream" target="blank">@elixirstream</a>
+          </li>
+        </ul>
+        <div class="pull-right">
+          <%= if @conn.assigns[:current_user] do %>
+            <%= @conn.assigns[:current_user].username %> &nbsp;&nbsp;&nbsp; 
+            <i class="fa fa-cog"></i>
+            <a href="<%= user_path(@conn, :sign_out) %>" id="signout">Sign out
+              <i class="fa fa-sign-out"></i>
+            </a>
           <% else %>
-            <li>
-              <a href="<%= user_path(@conn, :log_in_form) %>">Log in</a>
-            </li>
-            <li>
+            <div class="user-signin">
+              <a href="<%= user_path(@conn, :log_in_form) %>">Log in</a> | 
               <a href="<%= user_path(@conn, :register_form) %>">Register</a>
-            </li>
+            </div>
           <% end %>
-          </ul>
         </div>
       </div>
-      </div>
-    </nav>
+    </div>
+  </div>
     <div class="container">
 
       <p class="alert alert-info"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger"><%= get_flash(@conn, :error) %></p>
 
-      <%= @inner %>
+
+      <div class="container">
+        <%= @inner %>
+      </div>
 
       <div class="footer">
+        <a href="https://github.com/DiatomEnterprises/elixir-stream"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
       </div>
 
     </div> <!-- /container -->
