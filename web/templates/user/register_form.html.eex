@@ -1,6 +1,95 @@
-<h2>Register</h2>
+<div class="container">
+  <div class="row signup">
+    <div class="title">Sign up</div>
+    <hr>
 
-<%= render "form.html", changeset: @changeset,
-                        action: user_path(@conn, :register) %>
+    <div class="span5">
+      <%= form_for @changeset, user_path(@conn, :register), [class: "form-horizontal"], fn f -> %>
+      <div class="container">
+        <div class="row signin">
 
-<%= link "Back", to: entry_path(@conn, :index) %>
+          <div class="title">Sign in</div>
+          <hr>
+
+          <%= form_for @conn, user_path(@conn, :log_in), [name: :log_in_info], fn f -> %>
+          <%= if f.errors != [] do %>
+            <div class="alert alert-danger">
+              <p>Oops, something went wrong! Please check the errors below:</p>
+              <ul>
+                <%= for {attr, message} <- f.errors do %>
+                  <li><%= humanize(attr) %> <%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="control-group">
+            <label class="control-label" for="username">Username</label>
+            <div class="controls">
+              <%= text_input f, :username, class: "" %>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="password">Password</label>
+            <div class="controls">
+              <%= password_input f, :password, class: "" %>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="controls">
+              <%= submit "Submit", class: "btn" %>
+            </div>
+          </div>
+        <% end %>
+
+        </div>
+      </div>
+      <%= if f.errors != [] do %>
+        <div class="alert alert-danger">
+          <p>Oops, something went wrong! Please check the errors below:</p>
+          <ul>
+            <%= for {attr, message} <- f.errors do %>
+              <li><%= humanize(attr) %> <%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="control-group">
+        <label class="control-label" for="username">Username</label>
+        <div class="controls">
+          <%= text_input f, :username, [placeholder: "Username"] %>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="email">Email</label>
+        <div class="controls">
+          <%= text_input f, :email, [placeholder: "Email"] %>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="password">Password</label>
+        <div class="controls">
+          <%= password_input f, :password, [placeholder: "Password"] %>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <%= submit "Register", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+
+    <div class="span4">
+      <div class="alert alert-info">
+        A couple of things you should know:
+        <br>
+        <br>
+        <ul>
+          <li>Username - min: 5, max: 50</li>
+          <li>Email - a valid one (used for avatars)</li>
+          <li>Password - min: 8, max: 50</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

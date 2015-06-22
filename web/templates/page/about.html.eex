@@ -1,34 +1,26 @@
-<div class="jumbotron">
-  <h2>Welcome to Phoenix!</h2>
-  <p class="lead">Phoenix is an Elixir Web Framework targeting full-featured, fault tolerant applications with realtime functionality.</p>
-</div>
+<div class="container">
+  <div class="row about">
 
-<div class="row marketing">
-  <div class="col-lg-6">
-    <h4>Resources</h4>
-    <ul>
-      <li>
-        <a href="http://hexdocs.pm/phoenix">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-    </ul>
+    <div class="title">About</div>
+    <hr>
+
+    <h4>What is ElixirStream?</h4>
+    <br>
+    <p>
+    For more than half a year a group of our developers has been researching Elixir programming language. Now here at <b><a href="http://www.diatomenterprises.com/">Diatom</a></b>, we strongly believe that Elixir is "The Next big Thing", so we've decided to give our community a boost and create a link-sharing platform.
+    </p>
+    <p>
+    “So, how is this platform different from other platforms like Reddit, Elixir mailing lists, blog aggregators, etc.?” you might ask. The answer is - our goal is to bring news, share at the single place and have fun along the way. Self-promotion is more than welcome here. Thus, feel free to share your posts!
+    </p>
+    <br>
+    <h4>Sponsors</h4>
+    <a href="http://www.diatomenterprises.com/" class="diatom" target="_blank"></a>
+    <h4>People involved and Thank you's</h4>
+    <p>
+    We would like to say special thanks to <b><a href="https://twitter.com/emberflare_com">@emberflare_com</a></b> and <b><a href="https://github.com/ugisozols">Ugis Ozols</a></b> for open sourcing his project.
+    </p>
+    <p>Elixir Stream was created by <b><a href="https://github.com/janjiss">Janis Miezitis</a></b> and <b><a href="https://github.com/BLauris">Lauris Bligzna</a></b></p>
+    <br>
   </div>
 
-  <div class="col-lg-6">
-    <h4>Help</h4>
-    <ul>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/issues?state=open">Issues</a>
-      </li>
-      <li>
-        <a href="irc://irc.freenode.net/elixir-lang">#elixir-lang on freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/chris_mccord">@chris_mccord</a>
-      </li>
-    </ul>
-  </div>
 </div>
-

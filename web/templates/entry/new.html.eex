@@ -5,14 +5,15 @@
 
     <div class="alert alert-info">
       Tips before you hit <strong>Submit</strong>:
-      <br><br>
+      <br>
       <ul>
         <li>We support markdown so use that to format your entry</li>
         <li>Use the live preview area below to make sure all of the formatting and links are working correctly</li>
       </ul>
     </div>
 
-    <%= form_for @changeset, entry_path(@conn, :create), fn f -> %>
+    <%= form_for @changeset, entry_path(@conn, :create), [class: "form-horizontal"], fn f -> %>
+
 
     <%= if f.errors != [] do %>
       <div class="alert alert-danger">
@@ -29,29 +30,29 @@
       <div class="control-group">
         <label class="control-label" for="entry_email">Your Email</label>
         <div class="controls">
-          <%= text_input f, :email, class: "form-control" %>
+          <%= text_input f, :email, [placeholder: "Email"] %>
         </div>
       </div>
 
       <div class="control-group">
         <label class="control-label" for="entry_author_name">Your name</label>
         <div class="controls">
-          <%= text_input f, :author_name, class: "form-control" %>
+          <%= text_input f, :author_name, [placeholder: "Name"] %>
         </div>
       </div>
     <% end %>
 
     <div class="control-group">
-      <label class="control-label" for="entry_title">Title</label>
+      <label class="control-label" for="entry_title">Entry title</label>
       <div class="controls">
-        <%= text_input f, :title, class: "form-control" %>
+        <%= text_input f, :title, [placeholder: "Title"] %>
       </div>
     </div>
 
     <div class="control-group">
-      <label class="control-label" for="entry_content">Content</label>
+      <label class="control-label" for="entry_content">Entry content</label>
       <div class="controls">
-        <%= textarea f, :body, class: "form-control" %>
+        <%= textarea f, :body, [placeholder: "Content"] %>
       </div>
     </div>
 
