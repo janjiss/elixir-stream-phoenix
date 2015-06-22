@@ -7,7 +7,7 @@ defmodule ElixirStream.EntryController do
   plug :action
 
   def index(conn, _params) do
-    entries = Repo.all from p in Entry, preload: [:user]
+    entries = Repo.all from e in Entry, order_by: [desc: e.id], preload: [:user]
     render conn, "index.html", entries: entries
   end
 

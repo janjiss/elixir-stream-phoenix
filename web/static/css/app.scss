@@ -1,5 +1,4 @@
 /* Space out content a bit */
-@include font-awesome;
 body {
 	margin-top: 0px;
 }
@@ -26,7 +25,7 @@ form.link, form.button {
   height: 71px;
   display: inline-block;
   margin-bottom: 1em;
-  background-image: url("/images/phoenix.png");
+  background-image: url("images/phoenix.png");
   background-size: 519px 71px;
 }
 
@@ -81,7 +80,7 @@ form.link, form.button {
   width: 320px; 
   height: 136px; 
   display: inline-block;
-  background-image: asset_url("diatom.png");
+  background-image: asset_url("images/diatom-logo.png");
   background-repeat:no-repeat;
   background-position: center; 
   margin: 10px;
