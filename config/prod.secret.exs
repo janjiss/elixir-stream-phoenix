@@ -11,5 +11,5 @@ config :elixir_stream, ElixirStream.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
-  database: "elixir_stream_phoenix_prod"
+  database: "elixir_stream_phoenix_prod",
   size: 20 # The amount of database connections in the pool

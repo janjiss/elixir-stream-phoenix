@@ -17,7 +17,8 @@ defmodule ElixirStream.Mixfile do
   # Type `mix help compile.app` for more information
   def application do
     [mod: {ElixirStream, []},
-     applications: [:phoenix, :cowboy, :logger, :ecto, :comeonin]]
+     applications: [:phoenix, :cowboy, :logger, :exrm,
+      :comeonin, :postgrex, :phoenix_html, :phoenix_ecto]]
   end
 
   # Specifies which paths to compile per environment
@@ -35,7 +36,8 @@ defmodule ElixirStream.Mixfile do
       {:phoenix_live_reload, "~> 0.4.1", only: :dev},
       {:phoenix_html, "~> 1.2"},
       {:cowboy, "~> 1.0"},
-      {:comeonin, "~> 0.8"}
+      {:comeonin, "~> 0.8"},
+      {:exrm, "~> 0.16.0"}
     ]
   end
 end

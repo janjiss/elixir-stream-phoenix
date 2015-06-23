@@ -7,9 +7,10 @@ use Mix.Config
 # You should also configure the url host to something
 # meaningful, we use this information when generating URLs.
 config :elixir_stream, ElixirStream.Endpoint,
-  http: [port: {:system, "PORT"}],
-  url: [host: "example.com"],
-  cache_static_manifest: "priv/static/manifest.json"
+  http: [port:  3000],
+  url: [host: "elixirstream.com"],
+  cache_static_manifest: "priv/static/manifest.json",
+  server: true
 
 # ## SSL Support
 #
@@ -33,12 +34,12 @@ config :logger, level: :info
 # If you are doing OTP releases, you need to instruct Phoenix
 # to start the server for all endpoints:
 #
-#     config :phoenix, :serve_endpoints, true
+  config :phoenix, :serve_endpoints, true
 #
 # Alternatively, you can configure exactly which server to
 # start per endpoint:
 #
-#     config :elixir_stream, ElixirStream.Endpoint, server: true
+# config :elixir_stream, ElixirStream.Endpoint, server: true
 #
 
 # Finally import the config/prod.secret.exs

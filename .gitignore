@@ -16,6 +16,7 @@ erl_crash.dump
 /priv/static/js
 /priv/static/images
 /priv/static
+/rel
 
 # The config/prod.secret.exs file by default contains sensitive
 # data and you should not commit it into version control.
