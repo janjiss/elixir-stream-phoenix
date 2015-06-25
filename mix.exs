@@ -18,7 +18,7 @@ defmodule ElixirStream.Mixfile do
   def application do
     [mod: {ElixirStream, []},
      applications: [:phoenix, :cowboy, :logger, :exrm,
-      :comeonin, :postgrex, :phoenix_html, :phoenix_ecto]]
+      :comeonin, :postgrex, :phoenix_html, :phoenix_ecto, :exjsx]]
   end
 
   # Specifies which paths to compile per environment
