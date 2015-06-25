@@ -1,9 +1,7 @@
 defmodule ElixirStream.User do
   use ElixirStream.Web, :model
-  use Ecto.Model.Callbacks
   alias ElixirStream.Repo
 
-  before_insert :set_password_digest
 
   schema "users" do
     field :username, :string
