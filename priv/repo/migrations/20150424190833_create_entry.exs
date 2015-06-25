@@ -7,12 +7,11 @@ defmodule ElixirStream.Repo.Migrations.CreateEntry do
       add :email, :string
       add :author_name, :string
       add :title, :string
-      add :body, :string
+      add :body, :text
       add :slug, :string
 
       timestamps
     end
-    
     create index(:entries, [:slug])
   end
 end

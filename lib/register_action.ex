@@ -9,9 +9,4 @@ defmodule ElixirStream.RegisterAction do
       {:error, changeset}
     end
   end
-
-  def crypt_password(password) do
-    Comeonin.Bcrypt.hashpwsalt(password)
-  end
-
 end
