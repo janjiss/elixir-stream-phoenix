@@ -3,7 +3,7 @@ defmodule ElixirStream.Mixfile do
 
   def project do
     [app: :elixir_stream,
-     version: "0.0.1",
+     version: "0.0.2",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix] ++ Mix.compilers,
