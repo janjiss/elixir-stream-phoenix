@@ -37,11 +37,6 @@ form.link, form.button {
 }
 
 /* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 940px;
-  }
-}
 .container-narrow > hr {
   margin: 30px 0;
 }
@@ -58,22 +53,6 @@ form.link, form.button {
 }
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing {
-    padding-right: 0;
-    padding-left: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
-}
 
 .diatom{
   background-color: #e67f34; 
@@ -121,7 +100,20 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus {
     text-align: center;
   }
 }
+@media (min-width: 1200px) {
+	.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+		width: 940px;
+	}
+	.span10 {
+		width: 740px;
+	}
+}
 
+@media (max-width: 720px;) {
+	.footer {
+		visibility: hidden;
+	}
+}
 .entry {
   background-color: #ffffff;
   padding: 20px;
@@ -142,7 +134,6 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus {
     }
   }
   .span10 {
-    width: 740px;
 
     hr {
       margin-top: 7px;
@@ -256,7 +247,6 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus {
 }
 
 .container {
-	width: 940px;
   a {
     color: #452057;
     text-decoration: underline;
