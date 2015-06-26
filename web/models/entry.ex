@@ -43,8 +43,8 @@ defmodule ElixirStream.Entry do
   end
 
   def set_slug(changeset) do
-    title = Ecto.Changeset.get_field(changeset, :title) |>
-    String.strip |> String.replace(" ", "_") |> String.downcase
-    change(changeset, %{slug: title})
+    slug = Ecto.Changeset.get_field(changeset, :title) |>
+    String.strip |> String.downcase |> String.replace(~r/([^a-z0-9])+/, "-")
+    change(changeset, %{slug: slug})
   end
 end
