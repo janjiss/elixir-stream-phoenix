@@ -7,7 +7,7 @@
   "ecto": {:hex, :ecto, "0.12.1"},
   "erlware_commons": {:hex, :erlware_commons, "0.13.0"},
   "exjsx": {:hex, :exjsx, "3.1.0"},
-  "exrm": {:git, "git://github.com/janjiss/exrm.git", "3e66a370a22f22ed0e39efaa6c77699684e0e196", []},
+  "exrm": {:git, "git://github.com/janjiss/exrm.git", "62a55db73167de0f3c368ce3d0921072b902665b", []},
   "fs": {:hex, :fs, "0.9.2"},
   "getopt": {:hex, :getopt, "0.8.2"},
   "jsx": {:hex, :jsx, "2.4.0"},
