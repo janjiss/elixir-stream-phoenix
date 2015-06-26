@@ -1,6 +1,14 @@
 defmodule ElixirStream.LayoutView do
   use ElixirStream.Web, :view
 
+  def page_title(conn) do
+    if conn.assigns[:entry] do
+      conn.assigns[:entry].title
+    else
+      "ElixirStream - Community driven place for Elixir goodies"
+    end
+  end
+
   def current_user(conn) do
     conn.assigns[:current_user]
   end
