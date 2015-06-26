@@ -37,7 +37,7 @@ defmodule ElixirStream.Mixfile do
       {:phoenix_html, "~> 1.2"},
       {:cowboy, "~> 1.0"},
       {:comeonin, "~> 0.8"},
-      {:exrm, "~> 0.17.1"},
+      {:exrm, github: "janjiss/exrm"},
       {:exjsx, "~> 3.1.0"}
     ]
   end
