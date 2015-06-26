@@ -14,10 +14,6 @@ defmodule ElixirStream.EntryView do
     "https://secure.gravatar.com/avatar/?s=90"
   end
 
-  def current_user(conn) do
-    conn.assigns[:current_user]
-  end
-
   def author_name(%Entry{author_name: author_name}) when author_name != nil do
     author_name
   end
@@ -27,11 +23,10 @@ defmodule ElixirStream.EntryView do
   end
 
   def owner(conn, entry) do
-    if current_user(conn) do
-      (entry.user_id == current_user(conn).id)
+    if ElixirStream.LayoutView.current_user(conn) do
+      (entry.user_id == ElixirStream.LayoutView.current_user(conn).id)
     end
   end
-
 
   defp gravatar_md5(email) do
     Crypto.md5(email)
