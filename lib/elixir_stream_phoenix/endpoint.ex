@@ -3,7 +3,7 @@ defmodule ElixirStream.Endpoint do
 
   # Serve at "/" the given assets from "priv/static" directory
   plug Plug.Static,
-    at: "/", from: :elixir_stream,
+    at: "/", from: :elixir_stream, gzip: true,
     only: ~w(css images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the

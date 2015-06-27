@@ -8,7 +8,7 @@ use Mix.Config
 # Configures the endpoint
 config :elixir_stream, ElixirStream.Endpoint,
   url: [host: "localhost"],
-  root: Path.expand("..", __DIR__),
+  root: Path.dirname(__DIR__),
   secret_key_base: "Bh92d59cbz3kKIfaFxeqEK/8LUPHV4tiirttImfeIVS0f94WByg3wo0yDABTTQY3",
   debug_errors: false,
   pubsub: [name: ElixirStream.PubSub,
