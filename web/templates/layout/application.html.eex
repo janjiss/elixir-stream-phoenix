@@ -34,13 +34,13 @@
         <a href="<%= entry_path(@conn, :index) %>" class="brand">ElixirStream</a>
         <ul class="nav">
           <li>
-            <a href="<%= entry_path(@conn, :index) %>">Entries</a>
+            <%= link "Entries", to: entry_path(@conn, :index) %>
           </li>
           <li>
-            <a href="<%= entry_path(@conn, :new) %>">Submit</a>
+            <%= link "Submit", to: entry_path(@conn, :new) %>
           </li>
           <li>
-            <a href="<%= page_path(@conn, :about) %>">About</a>
+            <%= link "About", to: page_path(@conn, :about) %>
           </li>
           <li>
             <a href="https://twitter.com/elixirstream" target="blank">@elixirstream</a>
@@ -54,8 +54,8 @@
             </a>
           <% else %>
             <div class="user-signin">
-              <a href="<%= user_path(@conn, :log_in_form) %>">Log in</a> | 
-              <a href="<%= user_path(@conn, :register_form) %>">Register</a>
+              <%= link "Log in", to: user_path(@conn, :log_in_form) %> |
+              <%= link "Register", to: user_path(@conn, :register_form) %>
             </div>
           <% end %>
         </div>
