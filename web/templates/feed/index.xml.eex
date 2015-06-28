@@ -4,15 +4,13 @@
     <title>ElixirStream</title>
     <description>Community driven place for all things Elixir</description>
     <link><%= entry_url(@conn, :index) %></link>
-    <items>
-      <%= for entry <- @items do %>
-        <item>
-          <title> <%= entry.title %> </title>
-          <link> <%= entry_url(@conn, :show, entry.slug) %> </link>
-          <description> <%= markdown_to_html_safe(entry.body) %> </description>
-          <pubDate> <%= date_format(entry)  %> </pubDate>
-        </item>
-      <% end %>
-    </items>
+    <%= for entry <- @items do %>
+      <item>
+        <title> <%= entry.title %> </title>
+        <link> <%= entry_url(@conn, :show, entry.slug) %> </link>
+        <description> <%= markdown_to_html_safe(entry.body) %> </description>
+        <pubDate> <%= date_format(entry)  %> </pubDate>
+      </item>
+    <% end %>
 </channel>
 </rss>
