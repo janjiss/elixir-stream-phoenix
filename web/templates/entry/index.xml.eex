@@ -10,7 +10,7 @@
           <title> <%= entry.title %> </title>
           <link> <%= entry_url(@conn, :show, entry.slug) %> </link>
           <description> <%= entry.body %> </description>
-          <pubDate> <%= entry.inserted_at %> </pubDate>
+          <pubDate> <%= date_format(entry)  %> </pubDate>
         </item>
       <% end %>
     </items>

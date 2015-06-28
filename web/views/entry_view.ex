@@ -10,6 +10,10 @@ defmodule ElixirStream.EntryView do
     "https://secure.gravatar.com/avatar/#{gravatar_md5(email)}?s=90"
   end
 
+  def date_format(entry) do
+    entry.inserted_at|> Ecto.DateTime.to_iso8601
+  end
+
   def gravatar_url(%Entry{email: nil}) do
     "https://secure.gravatar.com/avatar/?s=90"
   end
