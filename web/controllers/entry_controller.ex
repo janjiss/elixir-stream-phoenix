@@ -11,14 +11,6 @@ defmodule ElixirStream.EntryController do
     render conn, "index.html", entries: entries
   end
 
-  def rss(conn, _params) do
-    entries = Repo.all from e in Entry, order_by: [desc: e.id], preload: [:user]
-    conn
-     |> put_layout(:none)
-     |> put_resp_content_type("application/rss+xml")
-     |> render "index.xml", items: entries
-  end
-
   def new(conn, _params) do
     changeset = Entry.changeset_with_user(%Entry{})
     render conn, "new.html", changeset: changeset

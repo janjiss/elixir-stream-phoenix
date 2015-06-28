@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc><%= page_url(@conn,:about) %> </loc>
+    <lastmod><%= last_update_date(@entries)  %></lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc><%= entry_url(@conn, :index) %> </loc>
+    <lastmod><%= last_update_date(@entries) %></lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc><%= entry_url(@conn, :new) %> </loc>
+    <lastmod><%= last_update_date(@entries) %></lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <%= for entry <- @entries do %>
+    <url>
+      <loc><%= entry_url(@conn, :show, entry.slug) %> </loc>
+      <lastmod><%= date_format(entry)  %></lastmod>
+      <changefreq>never</changefreq>
+    </url>
+  <% end %>
+
+</urlset>

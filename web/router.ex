@@ -14,8 +14,9 @@ defmodule ElixirStream.Router do
 
   scope "/", ElixirStream do
     pipe_through :browser # Use the default browser stack
+    get "sitemap", SitemapController, :index
+    get "/rss", FeedController, :index
     get "/", EntryController, :index
-    get "/rss", EntryController, :rss
     get "register_form", UserController, :register_form
     post "register", UserController, :register
     get "log_in_form", UserController, :log_in_form

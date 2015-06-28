@@ -2,13 +2,6 @@ defmodule ElixirStream.EntryView do
   use ElixirStream.Web, :view
   alias ElixirStream.Entry
 
-  def markdown_to_html(markdown), do: Earmark.to_html(markdown)
-
-  def markdown_to_html_safe(markdown)  do
-    {:safe, html} = markdown_to_html(markdown) |> html_escape
-    html
-  end
-
   def gravatar_url(%Entry{email: email}) when email != nil do
     "https://secure.gravatar.com/avatar/#{gravatar_md5(email)}?s=90"
   end
@@ -16,11 +9,6 @@ defmodule ElixirStream.EntryView do
   def gravatar_url %Entry{user: %{email: email}} do
     "https://secure.gravatar.com/avatar/#{gravatar_md5(email)}?s=90"
   end
-
-  def date_format(entry) do
-    entry.inserted_at|> Ecto.DateTime.to_iso8601
-  end
-
 
   def gravatar_url(%Entry{email: nil}) do
     "https://secure.gravatar.com/avatar/?s=90"
