@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0">
   <channel>
-  <atom:link href="<%= entry_url(@conn, :index) %>rss" rel="self" type="application/rss+xml" />
     <title>ElixirStream</title>
     <description>Community driven place for all things Elixir</description>
     <link><%= entry_url(@conn, :index) %></link>
     <%= for entry <- @items do %>
       <item>
-        <title><%= entry.title %></title>
+        <title>
+          <![CDATA[<%= entry.title %>]]>
+        </title>
         <link><%= entry_url(@conn, :show, entry.slug) %></link>
-        <description><%= markdown_to_html_safe(entry.body) %></description>
+        <description>
+          <![CDATA[<%= parse_markdown(entry.body) %>]]>
+        </description>
         <pubDate><%= date_format(entry)  %></pubDate>
-        <guid><%= entry_url(@conn, :show, entry.slug) %></guid>
+        <guid isPermaLink="true"><%= entry_url(@conn, :show, entry.slug) %></guid>
       </item>
     <% end %>
-</channel>
+  </channel>
 </rss>

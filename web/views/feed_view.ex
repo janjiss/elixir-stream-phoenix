@@ -3,12 +3,7 @@ defmodule ElixirStream.FeedView do
   alias ElixirStream.Entry
   use Timex
 
-  def markdown_to_html(markdown), do: Earmark.to_html(markdown)
-
-  def markdown_to_html_safe(markdown)  do
-    {:safe, html} = markdown_to_html(markdown) |> html_escape
-    html
-  end
+  def parse_markdown(markdown), do: Earmark.to_html(markdown)
 
   def date_format(entry) do
     {:ok, date } = entry.inserted_at
