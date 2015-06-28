@@ -15,7 +15,7 @@ defmodule ElixirStream.EntryController do
     entries = Repo.all from e in Entry, order_by: [desc: e.id], preload: [:user]
     conn
      |> put_layout(:none)
-     |> put_resp_content_type("text/xml")
+     |> put_resp_content_type("application/rss+xml")
      |> render "index.xml", items: entries
   end
 
