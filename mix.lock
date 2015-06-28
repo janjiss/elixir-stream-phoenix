@@ -22,4 +22,6 @@
   "postgrex": {:hex, :postgrex, "0.8.4"},
   "providers": {:hex, :providers, "1.4.1"},
   "ranch": {:hex, :ranch, "1.0.0"},
-  "relx": {:hex, :relx, "2.1.1"}}
+  "relx": {:hex, :relx, "2.1.1"},
+  "timex": {:hex, :timex, "0.15.0"},
+  "tzdata": {:hex, :tzdata, "0.1.6"}}

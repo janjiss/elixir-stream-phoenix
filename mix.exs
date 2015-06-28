@@ -18,7 +18,8 @@ defmodule ElixirStream.Mixfile do
   def application do
     [mod: {ElixirStream, []},
      applications: [:phoenix, :cowboy, :logger, :exrm, :earmark,
-      :comeonin, :postgrex, :phoenix_html, :phoenix_ecto]]
+      :comeonin, :postgrex, :phoenix_html, :phoenix_ecto,
+      :timex]]
   end
 
   # Specifies which paths to compile per environment
@@ -38,7 +39,8 @@ defmodule ElixirStream.Mixfile do
       {:cowboy, "~> 1.0"},
       {:comeonin, "~> 0.8"},
       {:exrm, github: "janjiss/exrm"},
-      {:earmark, "~> 0.1.17"}
+      {:earmark, "~> 0.1.17"},
+      {:timex, "~> 0.15.0"}
     ]
   end
 end
