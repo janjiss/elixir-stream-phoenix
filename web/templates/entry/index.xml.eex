@@ -9,7 +9,7 @@
         <item>
           <title> <%= entry.title %> </title>
           <link> <%= entry_url(@conn, :show, entry.slug) %> </link>
-          <description> <%= entry.body %> </description>
+          <description> <%= md_to_html(entry.body) %> </description>
           <pubDate> <%= date_format(entry)  %> </pubDate>
         </item>
       <% end %>

@@ -14,6 +14,11 @@ defmodule ElixirStream.EntryView do
     entry.inserted_at|> Ecto.DateTime.to_iso8601
   end
 
+  def md_to_html(markdown) do
+    Earmark.to_html(markdown)
+    |> Phoenix.HTML.Safe.to_iodata
+  end
+
   def gravatar_url(%Entry{email: nil}) do
     "https://secure.gravatar.com/avatar/?s=90"
   end
