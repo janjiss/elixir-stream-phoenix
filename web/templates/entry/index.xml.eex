@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>ElixirStream</title>
+    <description>Community driven place for all things Elixir</description>
+    <link><%= entry_url(@conn, :index) %></link>
+    <items>
+      <%= for entry <- @items do %>
+        <item>
+          <title> <%= entry.title %> </title>
+          <link> <%= entry_url(@conn, :show, entry.slug) %> </link>
+          <description> <%= entry.body %> </description>
+          <pubDate> <%= entry.inserted_at %> </pubDate>
+        </item>
+      <% end %>
+    </items>
+</channel>
+</rss>

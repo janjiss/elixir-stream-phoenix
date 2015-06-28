@@ -1,5 +1,4 @@
 defmodule ElixirStream.EntryController do
-  require IEx
   use ElixirStream.Web, :controller
   alias ElixirStream.Entry
 
@@ -10,6 +9,14 @@ defmodule ElixirStream.EntryController do
   def index(conn, _params) do
     entries = Repo.all from e in Entry, order_by: [desc: e.id], preload: [:user]
     render conn, "index.html", entries: entries
+  end
+
+  def rss(conn, _params) do
+    entries = Repo.all from e in Entry, order_by: [desc: e.id], preload: [:user]
+    conn
+     |> put_layout(:none)
+     |> put_resp_content_type("text/xml")
+     |> render "index.xml", items: entries
   end
 
   def new(conn, _params) do
