@@ -17,7 +17,7 @@ defmodule ElixirStream.Mixfile do
   # Type `mix help compile.app` for more information
   def application do
     [mod: {ElixirStream, []},
-     applications: [:phoenix, :cowboy, :logger, :exrm,
+     applications: [:phoenix, :cowboy, :logger, :exrm, :earmark,
       :comeonin, :postgrex, :phoenix_html, :phoenix_ecto]]
   end
 
