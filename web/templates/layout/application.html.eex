@@ -35,6 +35,13 @@
             <li>
               <a href="https://twitter.com/elixirstream" target="blank">@elixirstream</a>
             </li>
+            <li>
+                <a href="<%= feed_path(@conn, :index) %>">
+                  RSS
+                  <i class="fa fa-rss"></i>
+                </a>
+            </li>
+
           </ul>
           <div class="pull-right">
             <%= if current_user(@conn) do %>
