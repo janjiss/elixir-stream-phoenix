@@ -7,10 +7,11 @@
     <link><%= entry_url(@conn, :index) %></link>
     <%= for entry <- @items do %>
       <item>
-        <title> <%= entry.title %> </title>
-        <link> <%= entry_url(@conn, :show, entry.slug) %> </link>
-        <description> <%= markdown_to_html_safe(entry.body) %> </description>
-        <pubDate> <%= date_format(entry)  %> </pubDate>
+        <title><%= entry.title %></title>
+        <link><%= entry_url(@conn, :show, entry.slug) %></link>
+        <description><%= markdown_to_html_safe(entry.body) %></description>
+        <pubDate><%= date_format(entry)  %></pubDate>
+        <guid><%= entry_url(@conn, :show, entry.slug) %></guid>
       </item>
     <% end %>
 </channel>
