@@ -33,7 +33,10 @@
               <%= link "About", to: page_path(@conn, :about) %>
             </li>
             <li>
-              <a href="https://twitter.com/elixirstream" target="blank">@elixirstream</a>
+              <a href="https://twitter.com/elixirstream" target="blank">
+                Follow
+                <i class="fa fa-twitter-square"></i>
+              </a>
             </li>
             <li>
                 <a href="<%= feed_path(@conn, :index) %>">
