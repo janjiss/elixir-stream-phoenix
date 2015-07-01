@@ -38,7 +38,7 @@ defmodule ElixirStream.Mixfile do
       {:phoenix_live_reload, "~> 0.4", only: :dev},
       {:cowboy, "~> 1.0"},
       {:comeonin, "~> 0.8"},
-      {:exrm, github: "janjiss/exrm"},
+      {:exrm, "~> 0.17.3"},
       {:earmark, "~> 0.1.17"},
       {:timex, "~> 0.15.0"}
     ]
