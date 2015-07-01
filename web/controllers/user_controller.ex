@@ -2,10 +2,8 @@ defmodule ElixirStream.UserController do
   use ElixirStream.Web, :controller
   alias ElixirStream.User
 
-  plug ElixirStream.Plugs.CheckAuthentication
   plug :redirect_if_authenticated when action in [:register, :register_form, :log_in, :log_in_form]
   plug :scrub_params, "user" when action in [:create, :update]
-  plug :action
 
   def index(conn, _params) do
     users = Repo.all(User)

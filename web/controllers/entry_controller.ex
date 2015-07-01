@@ -2,9 +2,7 @@ defmodule ElixirStream.EntryController do
   use ElixirStream.Web, :controller
   alias ElixirStream.Entry
 
-  plug ElixirStream.Plugs.CheckAuthentication
   plug :scrub_params, "entry" when action in [:create, :update]
-  plug :action
 
   def index(conn, _params) do
     entries = Repo.all from e in Entry, order_by: [desc: e.id], preload: [:user]
