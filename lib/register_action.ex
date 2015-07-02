@@ -3,7 +3,7 @@ defmodule ElixirStream.RegisterAction do
   def sign_up(params) do
     changeset = User.changeset(%User{}, params)
     if changeset.valid? do
-      user = ElixirStream.Repo.insert(changeset)
+      user = ElixirStream.Repo.insert!(changeset)
       {:ok, user}
     else
       {:error, changeset}
