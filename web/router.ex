@@ -34,9 +34,10 @@ defmodule ElixirStream.Router do
     get "/", FeedController, :index
   end
 
-  scope "/admin", ElixirStream.Admin do
+  scope "/admin", ElixirStream.Admin, as: :admin do
     pipe_through :browser # Use the default browser stack
     get "/", EntryController, :index
+    resources "entries", EntryController
   end
 
   # Other scopes may use custom stacks.

@@ -4,6 +4,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= page_title(@conn) %></title>
+    <meta name="description" content="Community driven place for Elixir goodies">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&subset=cyrillic-ext,greek-ext' rel='stylesheet' type='text/css'>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/admin/app.css") %>">
   </head>
   <body>
@@ -13,7 +24,6 @@
       <%= @inner %>
 
     </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <script>require("web/static/js/admin/app")</script>
+    <script src="<%= static_path(@conn, "/js/admin/app.js") %>"></script>
   </body>
 </html>
