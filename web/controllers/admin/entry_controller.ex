@@ -6,6 +6,6 @@ defmodule ElixirStream.Admin.EntryController do
     entries = Repo.all from e in Entry, order_by: [desc: e.id], preload: [:user]
      conn
      |> put_layout("admin.html")
-     |> render "index.html", entries: []
+     |> render "index.html", entries: entries
   end
 end
