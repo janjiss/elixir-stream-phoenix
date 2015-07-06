@@ -18,6 +18,10 @@ defmodule ElixirStream.Admin.EntryView do
     username
   end
 
+  def author_name(_) do
+    "username"
+  end
+
   def owner(conn, entry) do
     if ElixirStream.LayoutView.current_user(conn) do
       (entry.user_id == ElixirStream.LayoutView.current_user(conn).id)

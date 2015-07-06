@@ -18,7 +18,7 @@ defmodule ElixirStream.Entry do
     timestamps
   end
 
-  @optional_fields ~w(email author_name tweet_message scheduled_time)
+  @optional_fields ~w(email author_name tweet_message scheduled_time user_id)
   @required_fields ~w(title body)
 
   @doc """
@@ -43,7 +43,7 @@ defmodule ElixirStream.Entry do
     |> validate_length(:title, min: 5)
     |> validate_length(:body, min: 15)
     |> validate_length(:body, max: 500)
-    |> validate_length(:tweet_message, min: 140)
+    |> validate_length(:tweet_message, min: 10)
     |> validate_length(:tweet_message, max: 140)
   end
 
