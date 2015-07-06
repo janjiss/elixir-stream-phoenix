@@ -11,6 +11,12 @@
   <% end %>
 
   <div class="form-group">
+    <label>User</label>
+    <%= select f, :user_id, all_users, class: "form-control" %>
+  </div>
+
+
+  <div class="form-group">
     <label>Title</label>
     <%= text_input f, :title, class: "form-control" %>
   </div>
