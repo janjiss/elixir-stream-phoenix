@@ -21,10 +21,6 @@
     <%= text_input f, :title, class: "form-control" %>
   </div>
 
-  <div class="form-group">
-    <label>Body</label>
-    <%= textarea f, :body, class: "form-control" %>
-  </div>
 
   <div class="form-group">
     <label>Body</label>

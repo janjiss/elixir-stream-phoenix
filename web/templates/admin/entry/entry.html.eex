@@ -1,8 +1,8 @@
 <th><%= @entry.id %></th>
 <td><%= author_name(@entry) %></td>
 <td><%= @entry.title %></td>
-<td><%= "@entry.twitter" %></td>
-<td><%= "@entry.scheduled" %></td>
+<td><%= @entry.tweet_message %></td>
+<td><%= @entry.scheduled_time %></td>
 <td class="col-md-2">
     <%= link "Edit", to: admin_entry_path(@conn, :edit, @entry.slug ), class: "btn btn-info" %>
   <div class="pull-right">
