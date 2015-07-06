@@ -10,7 +10,7 @@ defmodule ElixirStream do
       # Start the endpoint when the application starts
       supervisor(ElixirStream.Endpoint, []),
       # Start the Ecto repository
-      worker(ElixirStream.Repo, []),
+      worker(ElixirStream.Repo, [])
       # Here you could define other workers and supervisors as children
       # worker(ElixirStream.Worker, [arg1, arg2, arg3]),
     ]

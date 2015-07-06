@@ -9,13 +9,16 @@ defmodule ElixirStream.Entry do
     field :email, :string
     field :author_name, :string
     field :title, :string
+    field :tweet_message, :string
+    field :scheduled_time, Ecto.DateTime
+    field :tweet_posted, :boolean
     field :body, :string
     field :slug, :string
     belongs_to :user, User
     timestamps
   end
 
-  @optional_fields ~w(email author_name)
+  @optional_fields ~w(email author_name tweet_message scheduled_time)
   @required_fields ~w(title body)
 
   @doc """
@@ -32,6 +35,16 @@ defmodule ElixirStream.Entry do
     |> validate_length(:title, min: 5)
     |> validate_length(:body, min: 15)
     |> validate_length(:body, max: 500)
+  end
+
+  def changeset_with_admin(model, params \\ :empty) do
+    model
+    |> cast(params, @required_fields, @optional_fields)
+    |> validate_length(:title, min: 5)
+    |> validate_length(:body, min: 15)
+    |> validate_length(:body, max: 500)
+    |> validate_length(:tweet_message, min: 140)
+    |> validate_length(:tweet_message, max: 140)
   end
 
   def changeset_with_user(model, params \\ :empty) do
