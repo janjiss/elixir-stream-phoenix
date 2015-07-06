@@ -8,4 +8,11 @@ defmodule ElixirStream.Admin.EntryController do
      |> put_layout("admin.html")
      |> render "index.html", entries: entries
   end
+
+  def new(conn, _params) do
+    changeset = Entry.changeset_with_admin(%Entry{})
+    conn
+    |> put_layout("admin.html")
+    |> render "new.html", changeset: changeset
+  end
 end

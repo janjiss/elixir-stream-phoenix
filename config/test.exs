@@ -12,4 +12,5 @@ config :logger, level: :warn
 config :elixir_stream, ElixirStream.Repo,
   adapter: Ecto.Adapters.Postgres,
   host: "localhost",
-  database: "elixir_stream_phoenix_test"
+  database: "elixir_stream_phoenix_test",
+  pool: Ecto.Adapters.SQL.Sandbox
