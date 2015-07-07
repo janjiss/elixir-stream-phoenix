@@ -16,6 +16,29 @@ defmodule ElixirStream.Admin.EntryController do
     |> render "new.html", changeset: changeset
   end
 
+  def edit(conn, %{"id" => id}) do
+    entry = Repo.one(from(e in Entry, where: e.slug == ^id ))
+    changeset = Entry.changeset_with_admin(entry)
+
+    conn
+    |> put_layout("admin.html")
+    |> render "edit.html", entry: entry, changeset: changeset
+  end
+
+  def update(conn, %{"id" => id, "entry" => entry_params}) do
+    entry = Repo.one(from(e in Entry, where: e.id == ^id ))
+    changeset = Entry.changeset_with_admin(entry, entry_params)
+
+    if changeset.valid? do
+      Repo.update(changeset)
+      conn
+      |> put_flash(:info, "Entry updated successfully.")
+      |> redirect(to: admin_entry_path(conn, :index))
+    else
+      render(conn, "edit.html", entry: entry, changeset: changeset)
+    end
+  end
+
   def create(conn, %{"entry" => entry_params}) do
     changeset = Entry.changeset_with_admin(%Entry{}, entry_params)
     if changeset.valid? do
