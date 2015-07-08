@@ -37,6 +37,7 @@ defmodule ElixirStream.Router do
   scope "/admin", ElixirStream.Admin, as: :admin do
     pipe_through :browser # Use the default browser stack
     get "/", EntryController, :index
+    get "tweeted", EntryController, :tweeted
     resources "entries", EntryController
   end
 
