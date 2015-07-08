@@ -2,6 +2,10 @@ defmodule ElixirStream.Admin.EntryController do
   use ElixirStream.Web, :controller
   alias ElixirStream.Entry
 
+  plug PlugBasicAuth,
+    username: Application.get_env(:basic_auth, :username),
+    password: Application.get_env(:basic_auth, :password)
+
   def index(conn, _params) do
     entries = Repo.all from e in Entry, order_by: [desc: e.id], preload: [:user]
      conn
@@ -51,6 +55,13 @@ defmodule ElixirStream.Admin.EntryController do
       |> put_layout("admin.html")
       |> render "new.html", changeset: changeset
     end
+  end
+
+  def tweeted(conn, %{"id" => id}) do
+    entry = Repo.one(from(e in Entry, where: e.id == ^id ))
+    conn
+    |> put_flash(:info, entry.id)
+    |> redirect(to: admin_entry_path(conn, :index))
   end
 
   def delete(conn, %{"id" => id}) do

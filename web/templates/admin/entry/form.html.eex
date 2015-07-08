@@ -1,4 +1,4 @@
-<%= form_for @changeset, @action, fn f -> %>
+<%= form_for @changeset,@action, [class: "form-horizontal"] , fn f -> %>
   <%= if f.errors != [] do %>
     <div class="alert alert-danger">
       <p>Oops, something went wrong! Please check the errors below:</p>
@@ -11,30 +11,38 @@
   <% end %>
 
   <div class="form-group">
-    <label>User</label>
-    <%= select f, :user_id, all_users, class: "form-control" %>
-  </div>
-
-
-  <div class="form-group">
-    <label>Title</label>
-    <%= text_input f, :title, class: "form-control" %>
-  </div>
-
-
-  <div class="form-group">
-    <label>Body</label>
-    <%= textarea f, :body, class: "form-control" %>
+    <label for="user_id" class="col-sm-1 control-label">User</label>
+    <div class="col-sm-11">
+      <%= select f, :user_id, all_users, class: "form-control" %>
+    </div>
   </div>
 
   <div class="form-group">
-    <label>Tweet Message</label>
-    <%= text_input f, :tweet_message, class: "form-control" %>
+    <label for="title" class="col-sm-1 control-label">Title</label>
+    <div class="col-sm-11">
+      <%= text_input f, :title, class: "form-control" %>
+    </div>
   </div>
 
   <div class="form-group">
-    <label>Scheduled Time</label>
-    <%= datetime_select f, :scheduled_time, class: "form-control" %>
+    <label for="body" class="col-sm-1 control-label">Body</label>
+    <div class="col-sm-11">
+      <%= textarea f, :body, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="tweet_message" class="col-sm-1 control-label">Tweet Message</label>
+    <div class="col-sm-11">
+      <%= text_input f, :tweet_message, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="scheduled_time" class="col-sm-1 control-label">Scheduled Time</label>
+    <div class="col-sm-11">
+      <%= datetime_select f, :scheduled_time, class: "form-control" %>
+    </div>
   </div>
 
   <div class="form-group">
