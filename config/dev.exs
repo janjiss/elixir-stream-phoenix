@@ -29,6 +29,13 @@ config :basic_auth,
   username: "admin",
   password: "admin"
 
+config :ex_twitter, :oauth, [
+   consumer_key: "",
+   consumer_secret: "",
+   access_token: "",
+   access_token_secret: ""
+  ]
+
 
 # Configure your database
 config :elixir_stream, ElixirStream.Repo,

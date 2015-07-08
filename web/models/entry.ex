@@ -18,7 +18,7 @@ defmodule ElixirStream.Entry do
     timestamps
   end
 
-  @optional_fields ~w(email author_name tweet_message scheduled_time user_id)
+  @optional_fields ~w(email author_name tweet_posted tweet_message scheduled_time user_id)
   @required_fields ~w(title body)
 
   @doc """

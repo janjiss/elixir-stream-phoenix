@@ -58,10 +58,16 @@ defmodule ElixirStream.Admin.EntryController do
   end
 
   def tweeted(conn, %{"id" => id}) do
-    entry = Repo.one(from(e in Entry, where: e.id == ^id ))
-    conn
-    |> put_flash(:info, entry.id)
-    |> redirect(to: admin_entry_path(conn, :index))
+      entry = Repo.one(from(e in Entry, where: e.id == ^id and e.tweet_posted == false))
+      if ElixirStream.Tweeted.tweeted(entry) do
+        message = "Entry Tweeted"
+      else
+        message = "Entry Not Tweeted"
+      end
+
+      conn
+      |> put_flash(:info, message)
+      |> redirect(to: admin_entry_path(conn, :index))
   end
 
   def delete(conn, %{"id" => id}) do
