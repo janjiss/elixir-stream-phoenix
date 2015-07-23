@@ -32,6 +32,7 @@ defmodule ElixirStream.Entry do
     |> validate_length(:title, min: 5)
     |> validate_length(:body, min: 15)
     |> validate_length(:body, max: 500)
+    |> validate_unique(:title, on: ElixirStream.Repo)
   end
 
   def changeset_with_user(model, params \\ :empty) do
@@ -40,6 +41,7 @@ defmodule ElixirStream.Entry do
     |> validate_length(:title, min: 5)
     |> validate_length(:body, min: 15)
     |> validate_length(:body, max: 500)
+    |> validate_unique(:title, on: ElixirStream.Repo)
   end
 
   def set_slug(changeset) do
