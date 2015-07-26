@@ -48,16 +48,6 @@ defmodule ElixirStream.Entry do
     |> validate_length(:tweet_message, max: 140)
   end
 
-  def changeset_with_admin(model, params \\ :empty) do
-    model
-    |> cast(params, @required_fields, @optional_fields)
-    |> validate_length(:title, min: 5)
-    |> validate_length(:body, min: 15)
-    |> validate_length(:body, max: 500)
-    |> validate_length(:tweet_message, min: 10)
-    |> validate_length(:tweet_message, max: 140)
-  end
-
   def changeset_with_user(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)

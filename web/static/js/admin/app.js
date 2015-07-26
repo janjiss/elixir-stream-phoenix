@@ -1,4 +1,4 @@
-class App  {
+class EntryPreview  {
   constructor() {
     this.entry_preview = $("#entry_preview")
     this.entry_body = $("#entry_body")
@@ -20,5 +20,9 @@ class App  {
   }
 }
 
-$( () => new App )
-export default App
+if ($("#entry_body").length > 0 && $("#entry_body").val().length > 0)  {
+  $( () => new EntryPreview )
+}
+
+
+export default EntryPreview
