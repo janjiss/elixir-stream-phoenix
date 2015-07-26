@@ -6,7 +6,7 @@ exports.config = {
         'js/app.js':  /^(web\/static\/js\/app)/,
         'js/admin/app.js':  /^(web\/static\/js\/admin)/,
         'js/google_analytics.js': /^(web\/static\/js\/google_analytics)/,
-        'js/vendor.js': /^(web\/static\/vendor)/,
+        'js/vendor.js': /^(web\/static\/vendor)/
       }
       // To use a separate vendor.js bundle, specify two files path
       // https://github.com/brunch/brunch/blob/stable/docs/config.md#files
