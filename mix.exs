@@ -19,7 +19,7 @@ defmodule ElixirStream.Mixfile do
     [mod: {ElixirStream, []},
      applications: [:phoenix, :cowboy, :logger, :exrm, :earmark,
       :comeonin, :postgrex, :phoenix_html, :phoenix_ecto,
-      :timex, :extwitter, :oauth, :plug_basic_auth]]
+      :timex, :extwitter, :oauth, :plug_basic_auth, :httpoison]]
   end
 
   # Specifies which paths to compile per environment
@@ -31,6 +31,8 @@ defmodule ElixirStream.Mixfile do
   # Type `mix help deps` for examples and options
   defp deps do
     [
+
+      {:httpoison, "~> 0.7.2"},
       {:phoenix, "~> 0.14.0"},
       {:phoenix_ecto, "~> 0.5"},
       {:postgrex, ">= 0.8.2"},

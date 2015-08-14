@@ -58,6 +58,12 @@
 
     <div class="control-group">
       <div class="controls">
+        <div class="g-recaptcha" data-sitekey="6LfmNgsTAAAAAEvMbRE0j4KBp2KSy7Mwbe_UkXn8"></div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
         <%= submit "Submit", class: "btn btn-primary" %>
         or
         <%= link "Cancel", to: entry_path(@conn, :index) %>
