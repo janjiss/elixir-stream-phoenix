@@ -15,6 +15,7 @@ defmodule ElixirStream.EntryController do
   end
 
   def create(%Plug.Conn{assigns: %{current_user: current_user}} = conn, %{"entry" => entry_params}) do
+    IO.inspect(Application.get_env(:captcha, :secret))
     case ElixirStream.CreateEntryActionForExistingUser.persist(entry_params, current_user, conn) do
       {:ok, %Entry{} = entry} ->
         conn
@@ -26,6 +27,7 @@ defmodule ElixirStream.EntryController do
   end
 
   def create(conn, %{"entry" => entry_params}) do
+    IO.inspect(Application.get_env(:captcha, :secret))
     case ElixirStream.CreateEntryActionForGuestUser.persist(entry_params, conn) do
       {:ok, %Entry{} = entry} ->
         conn
