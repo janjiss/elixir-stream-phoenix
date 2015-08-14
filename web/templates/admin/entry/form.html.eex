@@ -1,0 +1,62 @@
+<%= form_for @changeset,@action, [class: "form-horizontal"] , fn f -> %>
+  <%= if f.errors != [] do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below:</p>
+      <ul>
+        <%= for {attr, message} <- f.errors do %>
+          <li><%= humanize(attr) %> <%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <label for="scheduled_time" class="col-sm-1 control-label">Scheduled Time</label>
+    <div class="col-sm-11">
+      <%= datetime_select f, :scheduled_time, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="tweet_message" class="col-sm-1 control-label">Tweet Message</label>
+    <div class="col-sm-11">
+      <%= text_input f, :tweet_message, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="user_id" class="col-sm-1 control-label">User</label>
+    <div class="col-sm-11">
+      <%= select f, :user_id, all_users, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="title" class="col-sm-1 control-label">Title</label>
+    <div class="col-sm-11">
+      <%= text_input f, :title, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="body" class="col-sm-1 control-label">Body</label>
+    <div class="col-sm-11">
+      <%= textarea f, :body, class: "form-control" %>
+    </div>
+  </div>
+
+  <hr>
+
+  <div id="entry_preview">
+    <div class="info-message bs-callout bs-callout-warning">
+      Live preview area. Enter some text in the textarea above and watch me change
+    </div>
+  </div>
+
+  <hr>
+
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

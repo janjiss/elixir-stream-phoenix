@@ -1,0 +1,14 @@
+<th><%= @entry.id %></th>
+<td><%= author_name(@entry) %></td>
+<td><%= @entry.title %></td>
+<td><%= @entry.tweet_message %></td>
+<td><%= @entry.scheduled_time %></td>
+<td>
+  <div class="pull-right">
+    <%= link "Edit", to: admin_entry_path(@conn, :edit, @entry.slug ), class: "btn btn-info" %>
+    <%= unless @entry.tweet_posted do %>
+      <%= link "Tweeted", to: admin_entry_path(@conn, :tweeted, [id: @entry.id] ),class: "btn btn-primary" %>
+    <%end%>
+    </div>
+    <%= link "Delete", to: admin_entry_path(@conn, :delete, @entry), method: :delete, class: "btn btn-danger" %>
+</td>

@@ -74,9 +74,7 @@
       </div>
 
     </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <script>require("web/static/js/app")</script>
-    <script>require("web/static/js/google_analytics")</script>
+    <script src="<%= static_path(@conn, "/js/google_analytics.js") %>"></script>
 
     <script>
       $(document).ready(function(event) {

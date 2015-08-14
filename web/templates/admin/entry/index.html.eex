@@ -1,0 +1,21 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Author name</th>
+        <th>Title</th>
+        <th>Twitter Message</th>
+        <th>Scheduled Time</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for entry <- @entries do %>
+        <tr>
+          <%= render "entry.html", entry: entry, conn: @conn %>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
