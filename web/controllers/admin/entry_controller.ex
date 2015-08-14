@@ -3,8 +3,8 @@ defmodule ElixirStream.Admin.EntryController do
   alias ElixirStream.Entry
 
   plug PlugBasicAuth,
-    username: Application.get_env(:basic_auth, :username),
-    password: Application.get_env(:basic_auth, :password)
+    username: Application.get_env(:elixir_stream, :basic_auth)[:username],
+    password: Application.get_env(:elixir_stream, :basic_auth)[:password]
 
   def index(conn, _params) do
     entries = Repo.all from e in Entry, order_by: [desc: e.id], preload: [:user]

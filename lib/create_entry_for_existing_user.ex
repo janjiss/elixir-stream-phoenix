@@ -1,6 +1,6 @@
 defmodule ElixirStream.CreateEntryActionForExistingUser do
-
   alias ElixirStream.Entry
+  alias ElixirStream.ReCaptcha
 
   def persist(params, user, conn) do
     changeset = Entry.changeset_with_user(%Entry{}, params)

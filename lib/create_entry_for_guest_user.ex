@@ -1,5 +1,6 @@
 defmodule ElixirStream.CreateEntryActionForGuestUser do
   alias ElixirStream.Entry
+  alias ElixirStream.ReCaptcha
 
   def persist(params, conn) do
     changeset = Entry.changeset_without_user(%Entry{}, params)
