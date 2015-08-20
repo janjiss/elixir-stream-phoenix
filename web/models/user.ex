@@ -32,8 +32,8 @@ defmodule ElixirStream.User do
     |> validate_length(:username, max: 50)
     |> validate_length(:password, min: 8)
     |> validate_length(:password, max: 100)
-    |> validate_unique(:email, on: Repo)
-    |> validate_unique(:username, on: Repo)
+    |> unique_constraint(:email, on: Repo)
+    |> unique_constraint(:username, on: Repo)
   end
 
 

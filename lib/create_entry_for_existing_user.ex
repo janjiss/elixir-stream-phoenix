@@ -7,10 +7,8 @@ defmodule ElixirStream.CreateEntryActionForExistingUser do
     case ReCaptcha.verify(conn) do
       :ok ->
         if changeset.valid? do
-          entry =
-            Ecto.Changeset.change(changeset, %{user_id: user.id}) |>
-            ElixirStream.Repo.insert
-          {:ok, entry}
+          Ecto.Changeset.change(changeset, %{user_id: user.id}) |>
+          ElixirStream.Repo.insert
         else
           {:error, changeset}
         end

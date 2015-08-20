@@ -7,8 +7,7 @@ defmodule ElixirStream.CreateEntryActionForGuestUser do
     case ReCaptcha.verify(conn) do
       :ok ->
         if changeset.valid? do
-          entry = ElixirStream.Repo.insert(changeset)
-          {:ok, entry}
+          ElixirStream.Repo.insert(changeset)
         else
           {:error, changeset}
         end

@@ -26,8 +26,7 @@ defmodule ElixirStream.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_elixir_stream_phoenix_key",
-    signing_salt: "TXX4jPMo",
-    encryption_salt: "79wkPHEI"
+    signing_salt: "TXX4jPMo"
 
-  plug :router, ElixirStream.Router
+  plug ElixirStream.Router
 end
