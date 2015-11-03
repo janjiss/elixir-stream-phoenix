@@ -41,7 +41,7 @@ defmodule ElixirStream.Mixfile do
       {:comeonin, "~> 0.8"},
       {:exrm, "~> 0.19.2"},
       {:earmark, "~> 0.1.17"},
-      {:timex, "~> 0.15.0"},
+      {:timex, "~> 0.19.5"},
       {:oauth, github: "tim/erlang-oauth"},
       {:extwitter, "~> 0.2"},
       {:plug_basic_auth, github: "janjiss/plug_basic_auth"}

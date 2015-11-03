@@ -25,7 +25,7 @@ config :elixir_stream, ElixirStream.Endpoint,
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
-config :basic_auth,
+config :elixir_stream, :basic_auth,
   username: "admin",
   password: "admin"
 

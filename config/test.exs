@@ -15,6 +15,7 @@ config :elixir_stream, ElixirStream.Repo,
   database: "elixir_stream_phoenix_test",
   pool: Ecto.Adapters.SQL.Sandbox
 
-config :basic_auth,
-    username: "admin",
-    password: "admin"
+config :elixir_stream, :basic_auth,
+  username: "admin",
+  password: "admin"
+
