@@ -2,23 +2,23 @@ defmodule ElixirStream.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
-
   This can be used in your application as:
-
       use ElixirStream.Web, :controller
       use ElixirStream.Web, :view
-
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
   on imports, uses and aliases.
-
   Do NOT define functions inside the quoted expressions
   below.
   """
 
   def model do
     quote do
-      use Ecto.Model
+      use Ecto.Schema
+
+      import Ecto
+      import Ecto.Changeset
+      import Ecto.Query, only: [from: 1, from: 2]
     end
   end
 
@@ -26,12 +26,10 @@ defmodule ElixirStream.Web do
     quote do
       use Phoenix.Controller
 
-      # Alias the data repository and import query/model functions
       alias ElixirStream.Repo
-      import Ecto.Model
-      import Ecto.Query, only: [from: 2]
+      import Ecto
+      import Ecto.Query, only: [from: 1, from: 2]
 
-      # Import URL helpers from the router
       import ElixirStream.Router.Helpers
     end
   end
@@ -43,11 +41,11 @@ defmodule ElixirStream.Web do
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
 
-      # Import URL helpers from the router
-      import ElixirStream.Router.Helpers
-
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
+
+      import ElixirStream.Router.Helpers
+      import ElixirStream.ErrorHelpers
     end
   end
 
@@ -61,11 +59,9 @@ defmodule ElixirStream.Web do
     quote do
       use Phoenix.Channel
 
-      # Alias the data repository and import query/model functions
       alias ElixirStream.Repo
-      import Ecto.Model
-      import Ecto.Query, only: [from: 2]
-
+      import Ecto
+      import Ecto.Query, only: [from: 1, from: 2]
     end
   end
 

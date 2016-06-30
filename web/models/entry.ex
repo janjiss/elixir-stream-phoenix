@@ -1,9 +1,6 @@
 defmodule ElixirStream.Entry do
   use ElixirStream.Web, :model
-  use Ecto.Model.Callbacks
   alias ElixirStream.User
-
-  before_insert :set_slug
 
   schema "entries" do
     field :email, :string
@@ -55,6 +52,7 @@ defmodule ElixirStream.Entry do
     |> validate_length(:body, min: 15)
     |> validate_length(:body, max: 500)
     |> unique_constraint(:title, on: ElixirStream.Repo)
+    |> set_slug
   end
 
   def set_slug(changeset) do

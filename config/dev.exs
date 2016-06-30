@@ -10,14 +10,17 @@ config :elixir_stream, ElixirStream.Endpoint,
   http: [port: 3000],
   debug_errors: true,
   code_reloader: true,
-  cache_static_lookup: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch"]]
+  check_origin: false,
+  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
+                    cd: Path.expand("../", __DIR__)]]
+
 
 # Watch static and templates for browser reloading.
 config :elixir_stream, ElixirStream.Endpoint,
   live_reload: [
     patterns: [
-      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif)$},
+      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
+      ~r{priv/gettext/.*(po)$},
       ~r{web/views/.*(ex)$},
       ~r{web/templates/.*(eex)$}
     ]
@@ -25,11 +28,12 @@ config :elixir_stream, ElixirStream.Endpoint,
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
+
 config :elixir_stream, :basic_auth,
   username: "admin",
   password: "admin"
 
-config :ex_twitter, :oauth, [
+config :extwitter, :oauth, [
    consumer_key: "",
    consumer_secret: "",
    access_token: "",

@@ -20,15 +20,15 @@ defmodule ElixirStream.Router do
   scope "/", ElixirStream do
     pipe_through :browser # Use the default browser stack
     pipe_through :check_authentication
-    get "sitemap", SitemapController, :index
+    get "/sitemap", SitemapController, :index
     get "/", EntryController, :index
-    get "register_form", UserController, :register_form
-    post "register", UserController, :register
-    get "log_in_form", UserController, :log_in_form
-    post "log_in", UserController, :log_in
-    get "sign_out", UserController, :sign_out
-    get "about", PageController, :about
-    resources "entries", EntryController
+    get "/register_form", UserController, :register_form
+    post "/register", UserController, :register
+    get "/log_in_form", UserController, :log_in_form
+    post "/log_in", UserController, :log_in
+    get "/sign_out", UserController, :sign_out
+    get "/about", PageController, :about
+    resources "/entries", EntryController
   end
 
   scope "/rss", ElixirStream do
@@ -38,8 +38,8 @@ defmodule ElixirStream.Router do
   scope "/admin", ElixirStream.Admin, as: :admin do
     pipe_through :browser # Use the default browser stack
     get "/", EntryController, :index
-    get "tweeted", EntryController, :tweeted
-    resources "entries", EntryController
+    get "/tweeted", EntryController, :tweeted
+    resources "/entries", EntryController
   end
 
   # Other scopes may use custom stacks.

@@ -2,9 +2,7 @@ defmodule ElixirStream.Admin.EntryController do
   use ElixirStream.Web, :controller
   alias ElixirStream.Entry
 
-  plug PlugBasicAuth,
-    username: Application.get_env(:elixir_stream, :basic_auth)[:username],
-    password: Application.get_env(:elixir_stream, :basic_auth)[:password]
+  plug PlugBasicAuth, validation: &TopSecret.is_authorized/2
 
   def index(conn, _params) do
     entries = Repo.all from e in Entry, order_by: [desc: e.id], preload: [:user]
@@ -82,4 +80,16 @@ defmodule ElixirStream.Admin.EntryController do
     |> put_flash(:info, message)
     |> redirect(to: admin_entry_path(conn, :index))
   end
+
+  def is_authorized(user, pass) do
+      username = Application.get_env(:elixir_stream, :basic_auth)[:username]
+      password = Application.get_env(:elixir_stream, :basic_auth)[:password]
+      
+      if(username = user and password == pass)  do
+        :authorized
+      else
+        :unauthorized
+      end
+   end
+  def is_authorized(_user, _password), do: :unauthorized
 end

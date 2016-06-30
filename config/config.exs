@@ -5,16 +5,17 @@
 # is restricted to this project.
 use Mix.Config
 
+# General application configuration
+config :elixir_stream,
+  ecto_repos: [ElixirStream.Repo]
+
 # Configures the endpoint
 config :elixir_stream, ElixirStream.Endpoint,
   url: [host: "localhost"],
-  root: Path.dirname(__DIR__),
   secret_key_base: "Bh92d59cbz3kKIfaFxeqEK/8LUPHV4tiirttImfeIVS0f94WByg3wo0yDABTTQY3",
-  debug_errors: false,
+  render_errors: [view: ElixirStream.ErrorView, accepts: ~w(html json)],
   pubsub: [name: ElixirStream.PubSub,
-           adapter: Phoenix.PubSub.PG2],
-  session: [store: :cookie,
-           key: "gp6cONncGLws1zaQYhxJ9w=="]
+           adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,

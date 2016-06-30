@@ -1,9 +1,6 @@
 defmodule ElixirStream.User do
   use ElixirStream.Web, :model
-  use Ecto.Model.Callbacks
   alias ElixirStream.Repo
-
-  before_insert :set_password_digest
 
   schema "users" do
     field :username, :string
@@ -38,11 +35,13 @@ defmodule ElixirStream.User do
 
 
   def set_password_digest(changeset) do
-    password = Ecto.Changeset.get_field(changeset, :password)
-    change(changeset, %{password_digest: crypt_password(password)})
-  end
-
-  def crypt_password(password) do
-    Comeonin.Bcrypt.hashpwsalt(password)
+    case changeset do
+      %Ecto.Changeset{valid?: true, changes: %{password: password}} ->
+        put_change(
+          changeset, :password_digest, Bcrypt.hashpwsalt(password)
+        )
+      _ ->
+        changeset
+      end
   end
 end

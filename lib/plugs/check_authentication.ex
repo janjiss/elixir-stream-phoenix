@@ -1,6 +1,7 @@
 defmodule ElixirStream.Plugs.CheckAuthentication do
   import Plug.Conn
   import Plug.Session
+  alias ElixirStream.{Repo, User}
 
   def init(options) do
     options
@@ -9,7 +10,7 @@ defmodule ElixirStream.Plugs.CheckAuthentication do
   def call(conn, _) do
     user_id = get_session(conn, :user_id)
     if session_present?(user_id) do
-      assign(conn, :current_user, ElixirStream.Repo.get(ElixirStream.User, user_id))
+      assign(conn, :current_user, Repo.get(User, user_id))
     else
       conn
     end
